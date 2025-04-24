@@ -1,0 +1,48 @@
+# Compilados de Java
+*.class
+
+# Archivos de logs
+*.log
+
+# Directorios de build
+/build/
+/target/
+/out/
+
+# Config de IDEs
+.idea/
+/*.iml
+*.ipr
+*.iws
+*.sublime-workspace
+*.sublime-project
+*.vscode/
+
+# Archivos de Gradle
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+gradle-app.setting
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de entorno
+.env
+.env.*
+
+# Otros
+*.swp
+*~
+
+# Archivos generados por IntelliJ Fleet / WindSurf
+.fleet/
+
+# Base de datos H2 o archivos temporales
+*.db
+*.h2.db
+*.mv.db
+*.sqlite
+
+# Config de test
+/test-output/
