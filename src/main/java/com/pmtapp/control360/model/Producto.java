@@ -5,43 +5,49 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Producto")
+@Table(name = "producto") // asegurarse que la tabla esté en minúscula si en SQL Server está así
 @Getter
 @Setter
 public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "item")
     private Integer item;
 
+    @Column(name = "cantidad")
     private Integer cantidad;
 
-    @Column(nullable = false, length = 255)
+    @Column(name = "NombreTecnico", nullable = false, length = 255)
     private String nombreTecnico;
 
-    @Column(length = 50)
+
+    @Column(name = "medida", length = 50)
     private String medida;
 
-    @Column(length = 50)
+
+    @Column(name = "UnidadMedida", length = 50)
     private String unidadMedida;
 
-    @Column(length = 255)
+    @Column(name = "Marca", length = 255)
     private String marca;
 
+    @Column(name = "Descripcion")
     @Lob
     private String descripcion;
 
-    @Column(length = 255)
+    @Column(name = "imagen", length = 255)
     private String imagen;
 
+    @Column(name = "proveedor")
     private Integer proveedor;
 
-    @Column(length = 255)
+    @Column(name = "ubicacion", length = 255)
     private String ubicacion;
 
-    @Column(length = 50)
+    @Column(name = "estado", length = 50)
     private String estado;
 
-    @Column(length = 255)
+    @Column(name = "categoria", length = 255)
     private String categoria;
 }

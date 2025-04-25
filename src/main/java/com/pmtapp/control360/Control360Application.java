@@ -1,4 +1,4 @@
-package com.pmtapp.Control360;
+package com.pmtapp.control360;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
