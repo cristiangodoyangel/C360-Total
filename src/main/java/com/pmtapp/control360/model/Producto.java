@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "producto") // asegurarse que la tabla esté en minúscula si en SQL Server está así
+@Table(name = "Producto") // asegurarse que la tabla esté en minúscula si en SQL Server está así
 @Getter
 @Setter
 public class Producto {
