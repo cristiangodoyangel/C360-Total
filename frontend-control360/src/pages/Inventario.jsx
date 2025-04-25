@@ -1,20 +1,28 @@
-import { useEffect, useState } from "react";
-import { obtenerProductos } from "../api";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import '../App.css';
 
-export default function Inventario() {
+function Inventario() {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    obtenerProductos().then(setProductos).catch((e) => {
-      console.error("Error:", e.message);
-    });
+    axios.get('http://localhost:8080/productos')
+      .then(res => setProductos(res.data))
+      .catch(err => console.error(err));
   }, []);
 
   return (
-    <div>
-      <h2 className="mb-4">📦 Inventario de Bodega</h2>
-      <table className="table table-striped table-bordered table-hover">
-        <thead className="table-warning text-center">
+    <div className="container mt-4">
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h4><i className="fas fa-warehouse"></i> Inventario de Bodega</h4>
+        <div>
+          <button className="btn btn-orange me-2">Agregar Producto</button>
+          <button className="btn btn-orange">Subir Excel</button>
+        </div>
+      </div>
+
+      <table className="table table-bordered table-striped table-hover">
+        <thead className="bg-orange text-white">
           <tr>
             <th>Nombre Técnico</th>
             <th>Cantidad</th>
@@ -26,29 +34,23 @@ export default function Inventario() {
             <th>Acciones</th>
           </tr>
         </thead>
-        <tbody className="text-center">
-          {productos.map((p) => (
+        <tbody>
+          {productos.map(p => (
             <tr key={p.item}>
-              <td>{p.nombreTecnico}</td>
+              <td><a href="#">{p.nombreTecnico}</a></td>
               <td>{p.cantidad}</td>
               <td>{p.medida}</td>
               <td>{p.ubicacion}</td>
               <td>{p.estado}</td>
               <td>{p.categoria}</td>
               <td>
-                {p.imagen ? (
-                  <img src={p.imagen} alt="img" width="50" height="50" />
-                ) : (
-                  <span className="text-muted">Sin imagen</span>
-                )}
+                {p.imagen
+                  ? <img src={`https://weblogica.cl/inventario360/images/${p.imagen}`} alt="Producto" width="50" />
+                  : <i className="fas fa-image text-muted"></i>}
               </td>
               <td>
-                <button className="btn btn-sm btn-warning me-2">
-                  ✏️
-                </button>
-                <button className="btn btn-sm btn-danger">
-                  🗑️
-                </button>
+                <button className="btn-icon me-2"><i className="fas fa-pencil-alt"></i></button>
+                <button className="btn-icon"><i className="fas fa-trash"></i></button>
               </td>
             </tr>
           ))}
@@ -57,3 +59,5 @@ export default function Inventario() {
     </div>
   );
 }
+
+export default Inventario;
